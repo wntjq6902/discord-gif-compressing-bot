@@ -51,7 +51,10 @@ async def on_message(message):
 			os.remove ('temp.webm')
 	if message.content == "!revert":
 		await bot.send_message(message.channel, "reverting last gif compressed in this channel...")
-		await bot.send_file(message.channel, message.channel.id + ".gif")
+		try:
+			await bot.send_file(message.channel, message.channel.id + ".gif")
+		except FileNotFoundError:
+			await bot.send_message(message.channel, "`there is no gif to revert in this channel!`")
 	if message.content == "!gifhelp":
 		await bot.send_message(message.channel, "```avable commends\n!revert```")
 
