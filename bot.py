@@ -23,7 +23,6 @@ async def on_message(message):
 			await bot.send_typing(message.channel)
 			await bot.change_presence(game=discord.Game(name='downloading gif'))
 			gifsize = attachment['size']
-			uasnoof = "{'User-Agent' : 'Chrome/23.0.1271.95'}"
 			link = ('https://cdn.discordapp.com/attachments/' + message.channel.id + '/' + attachment['id'] + '/' + attachment['filename'])
 			req = urllib.request.Request(
     			url = link, 
