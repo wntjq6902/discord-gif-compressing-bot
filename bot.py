@@ -51,13 +51,13 @@ async def on_message(message):
 			await bot.change_presence(game=discord.Game(name='!gifhelp for info'))
 			os.remove ('temp.webm')
 	if message.content == "!revert":
-		await bot.send_message(message.channel, "reverting last gif compressed in this channel...")
 		try:
 			await bot.send_file(message.channel, message.channel.id + ".gif")
 		except FileNotFoundError:
 			await bot.send_message(message.channel, "`there is no gif to revert in this channel!`")
+		await bot.send_message(message.channel, "`reverted last gif compressed in this channel!`")
 	if message.content == "!gifhelp":
-		await bot.send_message(message.channel, "```gif compersser 0.5a\nbasic usuage: upload any gif file!\n\navailable commends\n!revert !invite !reportbug_```")
+		await bot.send_message(message.channel, "```gif compersser 0.6a\nbasic usuage: upload any gif file!\n\navailable commends\n !revert !invite !reportbug_```")
 	if message.content.startswith('!reportbug_'):
 		if message.content.split('_')[-1] == "":
 			await bot.send_message(message.channel, "`command usuage: !reportbug_(detail)`")
