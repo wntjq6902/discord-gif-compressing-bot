@@ -55,6 +55,15 @@ async def on_message(message):
 		except FileNotFoundError:
 			await bot.send_message(message.channel, "`there is no gif to revert in this channel!`")
 	if message.content == "!gifhelp":
-		await bot.send_message(message.channel, "```avable commends\n!revert```")
+		await bot.send_message(message.channel, "```avable commends\n!revert !reportbug_```")
+	if message.content.startswith('!reportbug_'):
+		if message.content.split('_')[-1] == "":
+			await bot.send_message(message.channel, "`command usuage: !reportbug_(detail)`")
+		else:
+			owner = bot.get_server('398896214629941248').get_member('343085618387222529')
+			await bot.send_message(owner, "bug report from " + message.author.name)
+			await bot.send_message(owner, message.content.split('_')[-1])
+			await bot.send_message(message.channel, "sent message to developer.\nhe'll respond when he get online.\ncurrent time in developer's contry: https://www.timeanddate.com/worldclock/south-korea/seoul")
+
 
 bot.run(token)
