@@ -4,6 +4,8 @@ import discord
 from discord.ext import commands
 import urllib.request
 import shutil
+import imageio
+imageio.plugins.ffmpeg.download()
 import moviepy.editor
 
 description = 'automatically compresses animated gif into webm'
