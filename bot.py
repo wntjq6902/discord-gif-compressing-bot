@@ -13,7 +13,7 @@ bot = commands.Bot(command_prefix=commands.when_mentioned_or('!'), description=d
 @bot.event
 async def on_ready():
 	print('Logged in as:\n{0} (ID: {0.id})'.format(bot.user))
-	await bot.change_presence(game=discord.Game(name='waiting for gif'))
+	await bot.change_presence(game=discord.Game(name='!gifhelp for info'))
 
 @bot.event
 async def on_message(message):
@@ -46,7 +46,7 @@ async def on_message(message):
 			await bot.send_message(message.channel, 'original sent by ' + message.author.mention)
 			await bot.send_message(message.channel, '```' + str(gifsize/1000) + 'KB compressed to ' + str(webmsize/1000) + 'KB!\n' + str(webmsize/gifsize*100) + '% size of original gif```')
 			await asyncio.sleep(5)
-			await bot.change_presence(game=discord.Game(name='waiting for gif'))
+			await bot.change_presence(game=discord.Game(name='!gifhelp for info'))
 			os.remove ('temp.webm')
 	if message.content == "!revert":
 		await bot.send_message(message.channel, "reverting last gif compressed in this channel...")
@@ -55,7 +55,7 @@ async def on_message(message):
 		except FileNotFoundError:
 			await bot.send_message(message.channel, "`there is no gif to revert in this channel!`")
 	if message.content == "!gifhelp":
-		await bot.send_message(message.channel, "```avable commends\n!revert !reportbug_```")
+		await bot.send_message(message.channel, "```gif compersser 0.5a\nbasic usuage: upload any gif file!\n\navable commends\n!revert !reportbug_```")
 	if message.content.startswith('!reportbug_'):
 		if message.content.split('_')[-1] == "":
 			await bot.send_message(message.channel, "`command usuage: !reportbug_(detail)`")
