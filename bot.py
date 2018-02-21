@@ -57,7 +57,7 @@ async def on_message(message):
 		except FileNotFoundError:
 			await bot.send_message(message.channel, "`there is no gif to revert in this channel!`")
 	if message.content == "!gifhelp":
-		await bot.send_message(message.channel, "```gif compersser 0.5a\nbasic usuage: upload any gif file!\n\navable commends\n!revert !reportbug_```")
+		await bot.send_message(message.channel, "```gif compersser 0.5a\nbasic usuage: upload any gif file!\n\navable commends\n!revert !invite !reportbug_```")
 	if message.content.startswith('!reportbug_'):
 		if message.content.split('_')[-1] == "":
 			await bot.send_message(message.channel, "`command usuage: !reportbug_(detail)`")
@@ -66,6 +66,7 @@ async def on_message(message):
 			await bot.send_message(owner, "bug report from " + message.author.name)
 			await bot.send_message(owner, message.content.split('_')[-1])
 			await bot.send_message(message.channel, "sent message to developer.\nhe'll respond when he get online.\ncurrent time in developer's contry: https://www.timeanddate.com/worldclock/south-korea/seoul")
-
+	if message.content == "!invite":
+		await bot.send_message(message.channel, "invite link: https://discordapp.com/api/oauth2/authorize?client_id=415519611489091584&permissions=43008&scope=bot")
 
 bot.run(token)
