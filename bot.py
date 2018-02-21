@@ -57,7 +57,7 @@ async def on_message(message):
 		except FileNotFoundError:
 			await bot.send_message(message.channel, "`there is no gif to revert in this channel!`")
 	if message.content == "!gifhelp":
-		await bot.send_message(message.channel, "```gif compersser 0.5a\nbasic usuage: upload any gif file!\n\navable commends\n!revert !invite !reportbug_```")
+		await bot.send_message(message.channel, "```gif compersser 0.5a\nbasic usuage: upload any gif file!\n\navailable commends\n!revert !invite !reportbug_```")
 	if message.content.startswith('!reportbug_'):
 		if message.content.split('_')[-1] == "":
 			await bot.send_message(message.channel, "`command usuage: !reportbug_(detail)`")
