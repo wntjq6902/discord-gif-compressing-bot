@@ -20,8 +20,8 @@ logger.addHandler(sthandler)
 imageio.plugins.ffmpeg.download()
 
 description = 'automatically compresses animated gif into webm'
-#token = ('NDE1NTE5NjExNDg5MDkxNTg0.DW3GVA.xeaORHG8j2tIzLlnIv38Hy1YEDA') #stable build account
-token = ('NDE2NTk2NjI1NzM0MTA3MTM4.DXGxXQ.Kxm-9jv_uWLprFg80u73kX3idxw') #unstable build account
+token = ('NDE1NTE5NjExNDg5MDkxNTg0.DW3GVA.xeaORHG8j2tIzLlnIv38Hy1YEDA') #stable build account
+#token = ('NDE2NTk2NjI1NzM0MTA3MTM4.DXGxXQ.Kxm-9jv_uWLprFg80u73kX3idxw') #unstable build account
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('!'), description=description)
 
 @bot.event
