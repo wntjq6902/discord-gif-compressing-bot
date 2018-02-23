@@ -5,6 +5,7 @@ from discord.ext import commands
 import urllib.request
 import shutil
 import imageio
+imageio.plugins.ffmpeg.download()
 import moviepy.editor
 import time
 import logging
@@ -16,8 +17,6 @@ sthandler = logging.StreamHandler()
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 logger.addHandler(sthandler)
-
-imageio.plugins.ffmpeg.download()
 
 description = 'automatically compresses animated gif into webm'
 token = ('NDE1NTE5NjExNDg5MDkxNTg0.DW3GVA.xeaORHG8j2tIzLlnIv38Hy1YEDA') #stable build account
