@@ -32,7 +32,6 @@ async def on_ready():
 async def on_message(message):
 	for attachment in message.attachments:
 		if attachment['filename'].split('.')[-1] == 'gif' and message.author != bot.user:
-			await bot.delete_message(message)
 			try:
 				os.remove (message.channel.id + '.gif')
 			except FileNotFoundError as e:
@@ -45,7 +44,7 @@ async def on_message(message):
     			url = link, 
     			data=None, 
     			headers={
-        			'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
+        			'User-Agent': 'Chrome/35.0.1916.47'
     			}
 			)
 			with urllib.request.urlopen(req) as response, open(message.channel.id + '.gif', 'wb') as out_file:
@@ -56,6 +55,7 @@ async def on_message(message):
 			webmsize = os.path.getsize('temp.webm')
 			await bot.change_presence(game=discord.Game(name='done!'))
 			await bot.send_file(message.channel, 'temp.webm')
+			await bot.delete_message(message)
 			await bot.send_message(message.channel, 'original sent by ' + message.author.mention)
 			await bot.send_message(message.channel, '```' + str(gifsize/1000) + 'KB compressed to ' + str(webmsize/1000) + 'KB!\n' + str(webmsize/gifsize*100) + '% size of original gif```')
 			await asyncio.sleep(5)
