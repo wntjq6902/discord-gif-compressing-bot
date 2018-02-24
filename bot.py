@@ -32,6 +32,8 @@ async def on_ready():
 async def on_message(message):
 	for attachment in message.attachments:
 		if attachment['filename'].split('.')[-1] == 'gif' and message.author != bot.user:
+			while message.channel.server.get_member(bot.user.id).game.name != "!gifhelp for info":
+				await asyncio.sleep(5)
 			try:
 				os.remove (message.channel.id + '.gif')
 			except FileNotFoundError as e:
