@@ -9,18 +9,26 @@ imageio.plugins.ffmpeg.download()
 import moviepy.editor
 import time
 import logging
+import sys
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO)
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 sthandler = logging.StreamHandler()
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+sthandler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 logger.addHandler(sthandler)
 
 description = 'automatically compresses animated gif into webm'
-token = ('NDE1NTE5NjExNDg5MDkxNTg0.DW3GVA.xeaORHG8j2tIzLlnIv38Hy1YEDA') #stable build account
-#token = ('NDE2NTk2NjI1NzM0MTA3MTM4.DXGxXQ.Kxm-9jv_uWLprFg80u73kX3idxw') #unstable build account
+
+if len(sys.argv) != 2:
+	logging.critical('bot token not found!!!')
+	logging.warning('usuage: python bot.py [bot token]')
+	sys.exit(1)
+else:
+	token = sys.argv[1]
+	print('using token ' + token)
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('!'), description=description)
 
 @bot.event
